@@ -65,7 +65,7 @@ module Twitter
     REGEXEN[:valid_url_path_chars] = /(?:
       #{REGEXEN[:wikipedia_disambiguation]}|
       @#{REGEXEN[:valid_general_url_path_chars]}+\/|
-      [\.,]#{REGEXEN[:valid_general_url_path_chars]}+|
+      [\.,]#{REGEXEN[:valid_general_url_path_chars]}?|
       #{REGEXEN[:valid_general_url_path_chars]}+
     )/ix
     # Valid end-of-path chracters (so /foo. does not gobble the period).
