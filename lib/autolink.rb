@@ -26,7 +26,7 @@ module Twitter
     }
 
     def html_escape(text)
-      text && text.gsub(/[&"'><]/) do |character|
+      text && text.to_s.gsub(/[&"'><]/) do |character|
         HTML_ENTITIES[character]
       end
     end
