@@ -615,6 +615,10 @@ describe Twitter::Autolink do
       @linker.html_escape("&amp;").should == "&amp;amp;"
       @linker.html_escape(nil).should == nil
     end
+
+    it "should escape non-strings properly" do
+      @linker.html_escape(100).should == "100"
+    end
   end
 
 end
