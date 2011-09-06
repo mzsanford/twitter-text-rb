@@ -1,34 +1,14 @@
 #!/usr/bin/env rake
-require 'rubygems' unless ENV['NO_RUBYGEMS']
-require 'rubygems/package_task'
-require 'rubygems/specification'
 require 'rdoc/task'
 require 'date'
-
-gem 'rspec'
 require 'rspec/core/rake_task'
 require 'digest'
-
-spec = Gem::Specification.new do |s|
-  s.name = "twitter-text"
-  s.version = "1.2.4"
-  s.authors = ["Matt Sanford", "Patrick Ewing", "Ben Cherry", "Britt Selvitelle", "Raffi Krikorian"]
-  s.email = ["matt@twitter.com", "patrick.henry.ewing@gmail.com", "bcherry@gmail.com", "bs@brittspace.com", "raffi@twitter.com"]
-  s.homepage = "http://twitter.com"
-  s.description = s.summary = "A gem that provides text handling for Twitter"
-
-  s.platform = Gem::Platform::RUBY
-  s.has_rdoc = true
-  s.summary = "Twitter text handling library"
-
-  s.add_dependency "actionpack"
-
-  s.require_path = 'lib'
-  s.files = %w(LICENSE README.rdoc Rakefile TODO) + Dir.glob("{lib,spec}/**/*")
-end
+require 'bundler'
 
 task :default => :spec
 task :test => :spec
+
+Bundler::GemHelper.install_tasks
 
 desc "Run specs"
 RSpec::Core::RakeTask.new(:spec)
@@ -79,22 +59,6 @@ namespace :doc do
     rd.main = "README.rdoc"
     rd.rdoc_dir = 'doc'
     rd.rdoc_files.include("README.rdoc", "lib/**/*.rb")
-  end
-end
-
-Gem::PackageTask.new(spec) do |pkg|
-  pkg.gem_spec = spec
-end
-
-desc "install the gem locally"
-task :install => [:package] do
-  sh %{sudo gem install pkg/#{GEM}-#{GEM_VERSION}}
-end
-
-desc "create a gemspec file"
-task :make_spec do
-  File.open("#{GEM}.gemspec", "w") do |file|
-    file.puts spec.to_ruby
   end
 end
 
