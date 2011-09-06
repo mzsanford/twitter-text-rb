@@ -6,7 +6,7 @@ require 'rdoc/task'
 require 'date'
 
 gem 'rspec'
-require 'spec/rake/spectask'
+require 'rspec/core/rake_task'
 require 'spec/rake/verify_rcov'
 require 'digest'
 
@@ -31,11 +31,7 @@ end
 task :default => :spec
 
 desc "Run specs"
-Spec::Rake::SpecTask.new do |t|
-  t.spec_files = FileList['spec/**/*_spec.rb']
-  t.spec_opts = %w(-fs --color)
-  t.libs << ["spec", '.']
-end
+RSpec::Core::RakeTask.new(:spec)
 
 desc "Run all examples with RCov"
 Spec::Rake::SpecTask.new('spec:rcov') do |t|
