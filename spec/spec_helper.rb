@@ -1,11 +1,13 @@
 $TESTING=true
-$:.push File.join(File.dirname(__FILE__), '..', 'lib')
+$:.unshift File.expand_path('..', __FILE__)
+$:.unshift File.expand_path('../../lib', __FILE__)
 
 require 'twitter-text'
 require 'hpricot'
-require 'spec/test_urls'
+require 'rspec'
+require 'test_urls'
 
-RSpec::Runner.configure do |config|
+RSpec.configure do |config|
   config.include TestUrls
 end
 
