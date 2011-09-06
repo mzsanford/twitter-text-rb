@@ -1,8 +1,8 @@
 #!/usr/bin/env rake
 require 'rubygems' unless ENV['NO_RUBYGEMS']
 require 'rubygems/package_task'
-require 'rake/rdoctask'
 require 'rubygems/specification'
+require 'rdoc/task'
 require 'date'
 
 gem 'rspec'
@@ -86,7 +86,7 @@ namespace :test do
 end
 
 namespace :doc do
-  Rake::RDocTask.new do |rd|
+  RDoc::Task.new do |rd|
     rd.main = "README.rdoc"
     rd.rdoc_dir = 'doc'
     rd.rdoc_files.include("README.rdoc", "lib/**/*.rb")
