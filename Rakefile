@@ -25,7 +25,6 @@ spec = Gem::Specification.new do |s|
   s.add_dependency "actionpack"
 
   s.require_path = 'lib'
-  s.autorequire = ''
   s.files = %w(LICENSE README.rdoc Rakefile TODO) + Dir.glob("{lib,spec}/**/*")
 end
 
