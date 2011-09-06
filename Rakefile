@@ -28,6 +28,7 @@ spec = Gem::Specification.new do |s|
 end
 
 task :default => :spec
+task :test => :spec
 
 desc "Run specs"
 RSpec::Core::RakeTask.new(:spec)
