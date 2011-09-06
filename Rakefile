@@ -1,6 +1,6 @@
 #!/usr/bin/env rake
 require 'rubygems' unless ENV['NO_RUBYGEMS']
-require 'rake/gempackagetask'
+require 'rubygems/package_task'
 require 'rake/rdoctask'
 require 'rubygems/specification'
 require 'date'
@@ -94,7 +94,7 @@ namespace :doc do
   end
 end
 
-Rake::GemPackageTask.new(spec) do |pkg|
+Gem::PackageTask.new(spec) do |pkg|
   pkg.gem_spec = spec
 end
 
