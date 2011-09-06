@@ -1,3 +1,4 @@
+#!/usr/bin/env rake
 require 'rubygems' unless ENV['NO_RUBYGEMS']
 require 'rake/gempackagetask'
 require 'rake/rdoctask'
