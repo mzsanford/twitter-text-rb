@@ -7,7 +7,6 @@ require 'date'
 
 gem 'rspec'
 require 'rspec/core/rake_task'
-require 'spec/rake/verify_rcov'
 require 'digest'
 
 spec = Gem::Specification.new do |s|
@@ -32,13 +31,6 @@ task :default => :spec
 
 desc "Run specs"
 RSpec::Core::RakeTask.new(:spec)
-
-desc "Run all examples with RCov"
-Spec::Rake::SpecTask.new('spec:rcov') do |t|
-  t.spec_files = FileList['spec/**/*.rb']
-  t.rcov = true
-  t.rcov_opts = ['--exclude', 'spec']
-end
 
 def conformance_version(dir)
   Dir[File.join(dir, '*')].inject(Digest::SHA1.new){|digest, file| digest.update(Digest::SHA1.file(file).hexdigest) }
