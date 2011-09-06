@@ -1,7 +1,13 @@
+# encoding: utf-8
+$:.unshift File.expand_path('..', __FILE__)
+$:.unshift File.expand_path('../../lib', __FILE__)
+
+major, minor, patch = RUBY_VERSION.split('.')
+$KCODE = 'utf8' if major == 1 && minor < 9
+
+require 'twitter-text'
 require 'test/unit'
 require 'yaml'
-$KCODE = 'UTF8'
-require File.dirname(__FILE__) + '/../lib/twitter-text'
 
 class ConformanceTest < Test::Unit::TestCase
   include Twitter::Extractor
