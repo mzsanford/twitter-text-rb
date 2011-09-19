@@ -1,6 +1,0 @@
-*.gem
-*.rbc
-.bundle
-pkg/*
-coverage
-doc
